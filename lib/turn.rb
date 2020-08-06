@@ -11,6 +11,15 @@ def input_to_index(input)
 end
 def valid_move?(board, index)
 
+  if index >= 0 && index <= 8 && board[index] == " "
+    true
+end
+def falsey_value(board, position)
+  return false if [" ", "", nil].include?(board[position])
+  return true if ["X", "O"].include?(board[position])
+  raise "#{board[position]} is not a valid move"
+end
+
 end
 
 
