@@ -1,4 +1,3 @@
-require "pry"
 def display_board(board)
   puts  " #{board[0]} | #{board[1]} | #{board[2]} "
   puts  "-----------"
@@ -6,23 +5,31 @@ def display_board(board)
   puts  "-----------"
   puts  " #{board[6]} | #{board[7]} | #{board[8]} "
 end
+
 def input_to_index(input)
-    input.to_i - 1
+  input.to_i - 1
 end
+
 def valid_move?(board, index)
-
-  if index >= 0 && index <= 8 && board[index] == " "
-    true
-end
-def falsey_value(board, position)
-  return false if [" ", "", nil].include?(board[position])
-  return true if ["X", "O"].include?(board[position])
-  raise "#{board[position]} is not a valid move"
+  if index >= 0 && index <= 9 && board[index] == " "
+  	true
+	else
+  	false
+	end
 end
 
+def move(board, position, char="X")
+  board[position] = char
 end
 
-
-board = []
-  puts "Welcome to Tic Tac Toe!"
-  #display_board(board)
+def turn(board)
+  puts "Please enter 1-9:"
+  position = gets.strip
+  index = input_to_index(position)
+  if (valid_move?(board, index))
+    move(board, index)
+  else
+    turn(board)
+  end
+  display_board(board)
+end
