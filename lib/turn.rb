@@ -8,7 +8,7 @@ end
 def input_to_index(input)
     input.to_i - 1
 end
-def valid_move?(board, index)  
+def valid_move?(board, index)
   if index >= 0 && index <= 9 && board[index] == " ")
   	true
 	else
