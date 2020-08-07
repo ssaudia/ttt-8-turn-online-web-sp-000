@@ -15,15 +15,19 @@ def valid_move?(board, index)
   	false
 	end
 end
-def falsey_value(board, position)
-  return false if [" ", "", nil].include?(board[position])
-  return true if ["X", "O"].include?(board[position])
-  raise "#{board[position]} is not a valid move"
+
+def move(board, position, char="X")
+  board[position] = char
+ end
+
+ def turn(board)
+  puts "Please, enter with the position (1-9):"
+  position = gets.strip
+  index = input_to_index(position)
+  if (valid_move?(board, index))
+    move(board, index)
+  else
+    turn(board)
+  end
+  display_board(board)
 end
-
-end
-
-
-board = []
-  puts "Welcome to Tic Tac Toe!"
-  #display_board(board)
