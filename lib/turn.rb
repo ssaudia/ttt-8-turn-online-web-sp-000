@@ -1,4 +1,3 @@
-require "pry"
 def display_board(board)
   puts  " #{board[0]} | #{board[1]} | #{board[2]} "
   puts  "-----------"
@@ -9,10 +8,12 @@ end
 def input_to_index(input)
     input.to_i - 1
 end
-def valid_move?(board, index)
-
-  if index >= 0 && index <= 8 && board[index] == " "
-    true
+def valid_move?(board, index)  
+  if index >= 0 && index <= 9 && board[index] == " ")
+  	true
+	else
+  	false
+	end
 end
 def falsey_value(board, position)
   return false if [" ", "", nil].include?(board[position])
